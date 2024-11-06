@@ -82,7 +82,8 @@ sudo Linux_for_Tegra/apply_binaries.sh --debug
 
 # Apply ARK compile device tree
 rm -rf ark_jetson_compiled_device_tree_files
-git clone -b ark_36.3.0.2 https://github.com/ARK-Electronics/ark_jetson_compiled_device_tree_files.git
+# git clone -b ark_36.3.0.2 https://github.com/ARK-Electronics/ark_jetson_compiled_device_tree_files.git
+git clone -b ark_36.3.0.2-TC358743 git@github.com:aurum-ai/ark_jetson_compiled_device_tree_files.git
 echo "Copying device tree files"
 sudo cp -r ark_jetson_compiled_device_tree_files/Linux_for_Tegra/* Linux_for_Tegra/
 
@@ -129,6 +130,11 @@ echo "CONFIG_ATH10K_USB=y" >> kernel/kernel-jammy-src/arch/arm64/configs/defconf
 echo "CONFIG_CRYPTO_MICHAEL_MIC=y" >> kernel/kernel-jammy-src/arch/arm64/configs/defconfig
 echo "CONFIG_ATH11K=y" >> kernel/kernel-jammy-src/arch/arm64/configs/defconfig
 echo "CONFIG_ATH11K_PCI=y" >> kernel/kernel-jammy-src/arch/arm64/configs/defconfig
+echo "CONFIG_MEDIA_CONTROLLER=y" >> kernel/kernel-jammy-src/arch/arm64/configs/defconfig
+echo "CONFIG_VIDEO_V4L2_SUBDEV_API=y" >> kernel/kernel-jammy-src/arch/arm64/configs/defconfig
+echo "CONFIG_HDMI=y" >> kernel/kernel-jammy-src/arch/arm64/configs/defconfig
+echo "CONFIG_V4L2_FWNODE=m" >> kernel/kernel-jammy-src/arch/arm64/configs/defconfig
+echo "CONFIG_VIDEO_TC358743=m" >> kernel/kernel-jammy-src/arch/arm64/configs/defconfig
 
 popd
 
